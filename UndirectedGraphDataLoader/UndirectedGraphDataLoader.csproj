@@ -50,7 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLoader.cs" />
-    <Compile Include="INodeParser.cs" />
+    <Compile Include="Interfaces\IDataLoader.cs" />
+    <Compile Include="Interfaces\INodeParser.cs" />
     <Compile Include="NodeXMLParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

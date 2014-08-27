@@ -11,7 +11,7 @@ using UndirectedGraphEntity;
 
 namespace UndirectedGraphDataLoader
 {
-    public class DataLoader
+    public class DataLoader : IDataLoader
     {
         #region Private Members
 
@@ -19,7 +19,7 @@ namespace UndirectedGraphDataLoader
 
         #endregion
 
-        #region Constructors
+        #region Class Constructor
 
         public DataLoader(INodeParser nodeParser)
         {
@@ -90,7 +90,7 @@ namespace UndirectedGraphDataLoader
         {
 
             ClearDatabase();
-            
+
             string[] files = Directory.GetFiles(directoryPath);
 
             foreach (var file in files)
@@ -98,7 +98,6 @@ namespace UndirectedGraphDataLoader
                 this.NodeFileToDataBase(file);
             }
 
-                                    
         }
 
         #endregion
