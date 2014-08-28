@@ -15,10 +15,12 @@ namespace UndirectedGraphEntity
         [DataMember]
         [Key]
         public string ID { get; set; }
+
         [DataMember]
         public string Label { get; set; }
+
         [DataMember]
-        public virtual List<GraphNode> AdjacentNodes { get; set; }
+        public List<GraphNode> AdjacentNodes { get; set; }
     }
 
 }

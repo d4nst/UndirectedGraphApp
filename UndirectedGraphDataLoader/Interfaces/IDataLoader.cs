@@ -1,7 +1,7 @@
 ﻿using System;
 namespace UndirectedGraphDataLoader
 {
-    interface IDataLoader
+    public interface IDataLoader
     {
         void NodeDirectoryToDatabase(string directoryPath);
         void NodeFileToDataBase(string filePath);

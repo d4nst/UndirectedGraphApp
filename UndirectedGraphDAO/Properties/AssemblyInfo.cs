@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("UndirectedGraphApp")]
+[assembly: AssemblyTitle("UndirectedGraphDAO")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("UndirectedGraphApp")]
+[assembly: AssemblyProduct("UndirectedGraphDAO")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("608098b5-67ab-445e-bef0-20d5562245e6")]
+[assembly: Guid("78d9dbbf-e081-410d-81d2-08c47e618579")]
 
 // Version information for an assembly consists of the following four values:
 //
