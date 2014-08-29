@@ -21,6 +21,9 @@ namespace UndirectedGraphEntity
 
         [DataMember]
         public List<GraphNode> AdjacentNodes { get; set; }
+
+        [DataMember]
+        public List<GraphEdge> GraphEdges { get; set; }
     }
 
 }

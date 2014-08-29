@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 using UndirectedGraphEntity;
 
 namespace UndirectedGraphDAO
@@ -31,7 +32,15 @@ namespace UndirectedGraphDAO
         {
             using (var dbContext = new GraphContext())
             {
-                return dbContext.GraphNode.Include("AdjacentNodes").ToList();;
+                return dbContext.GraphNode.Include("GraphEdges").ToList();
+            }
+        }
+
+        public List<GraphEdge> FindAllEdges()
+        {
+            using (var dbContext = new GraphContext())
+            {
+                return dbContext.GraphEdge.ToList();
             }
         }
 

@@ -49,10 +49,12 @@ namespace UndirectedGraphDataLoader
                     dbContext.Entry(existingNode).State = EntityState.Modified;
                     existingNode.Label = graphNode.Label;
 
-                    foreach (var adjacentNode in graphNode.AdjacentNodes)
-                    {
-                        CreateAdjacentNode(dbContext, existingNode, adjacentNode);
-                    }
+                    //foreach (var adjacentNode in graphNode.AdjacentNodes)
+                    //{
+                    //    CreateAdjacentNode(dbContext, existingNode, adjacentNode);
+                    //}
+
+                    CreateGraphEdges(dbContext, graphNode);
 
                     dbContext.SaveChanges();
 
@@ -65,12 +67,14 @@ namespace UndirectedGraphDataLoader
                         Label = graphNode.Label
                     });
 
-                    dbContext.SaveChanges();
+                    //dbContext.SaveChanges();
 
-                    foreach (var adjacentNode in graphNode.AdjacentNodes)
-                    {
-                        CreateAdjacentNode(dbContext, graphNode, adjacentNode);
-                    }
+                    //foreach (var adjacentNode in graphNode.AdjacentNodes)
+                    //{
+                    //    CreateAdjacentNode(dbContext, graphNode, adjacentNode);
+                    //}
+
+                    CreateGraphEdges(dbContext, graphNode);
 
                     dbContext.SaveChanges();
 
@@ -80,6 +84,7 @@ namespace UndirectedGraphDataLoader
             }
         }
 
+       
 
         /// <summary>
         /// Clears all the data in the database and
@@ -112,7 +117,7 @@ namespace UndirectedGraphDataLoader
         {
             using (var dbContext = new GraphContext())
             {
-                string[] tableNames = new string[] { "AdjacentNodes", "GraphNodes" };
+                string[] tableNames = new string[] { "GraphEdges", "GraphNodes" };
 
                 foreach (var tableName in tableNames)
                 {
@@ -137,6 +142,45 @@ namespace UndirectedGraphDataLoader
                 new SqlParameter("ID", graphNode.ID),
                 new SqlParameter("RelatedID", adjacentNode.ID)
                 );
+        }
+
+        /// <summary>
+        /// Creates all the edges for the given node.
+        /// If a related node doesn't exists, it creates a new node
+        /// </summary>
+        /// <param name="dbContext"></param>
+        /// <param name="graphNode"></param>
+        private static void CreateGraphEdges(GraphContext dbContext, GraphNode graphNode)
+        {
+            foreach (var graphEdge in graphNode.GraphEdges)
+            {
+                var existingRelatedNode = dbContext.GraphNode.Find(graphEdge.RelatedID);
+
+                if (existingRelatedNode == null)
+                {
+                    dbContext.GraphNode.Add(new GraphNode
+                    {
+                        ID = graphEdge.RelatedID,
+                    });
+                }
+
+                var existingEdge = dbContext.GraphEdge.Find(graphEdge.ID, graphEdge.RelatedID);
+
+                if (existingEdge != null)
+                {
+                    dbContext.Entry(existingEdge).State = EntityState.Modified;
+                    existingEdge.RelatedID = graphEdge.RelatedID;
+                }
+                else
+                {
+                    dbContext.GraphEdge.Add(new GraphEdge
+                    {
+                        ID = graphEdge.ID,
+                        RelatedID = graphEdge.RelatedID
+                    });
+                }
+
+            }
         }
 
         #endregion

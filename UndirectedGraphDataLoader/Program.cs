@@ -15,9 +15,10 @@ namespace UndirectedGraphDataLoader
             {
                 // Create xml parser
                 var nodeXMLParser = new NodeXMLParser();
+                var nodeEdgeXMLParser = new NodeEdgeXMLParser();
 
                 // Create dataLoader instance
-                var dataLoader = new DataLoader(nodeXMLParser);
+                var dataLoader = new DataLoader(nodeEdgeXMLParser);
 
                 // Insert all the files under the default path to the database
                 var defaultPath = @".\..\..\..\Input data";
