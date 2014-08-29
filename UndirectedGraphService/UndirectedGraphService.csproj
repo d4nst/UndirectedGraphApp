@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{83978347-5D82-471E-B982-792B831BAD53}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{0A284D8A-D6F3-4A35-9B36-001744567F84}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UndirectedGraphDataLoader</RootNamespace>
-    <AssemblyName>UndirectedGraphDataLoader</AssemblyName>
+    <RootNamespace>UndirectedGraphService</RootNamespace>
+    <AssemblyName>UndirectedGraphService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,15 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,25 +39,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataLoader.cs" />
-    <Compile Include="Interfaces\IDataLoader.cs" />
-    <Compile Include="Interfaces\INodeParser.cs" />
-    <Compile Include="NodeXMLParser.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="DataLoaderXmlService.cs" />
+    <Compile Include="Interfaces\INodeService.cs" />
+    <Compile Include="Interfaces\IDataLoaderXmlService.cs" />
+    <Compile Include="NodeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\UndirectedGraphDAO\UndirectedGraphDAO.csproj">
+      <Project>{c98a53c6-3745-4eea-8673-f796ff075d6b}</Project>
+      <Name>UndirectedGraphDAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UndirectedGraphDataLoader\UndirectedGraphDataLoader.csproj">
+      <Project>{83978347-5d82-471e-b982-792b831bad53}</Project>
+      <Name>UndirectedGraphDataLoader</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UndirectedGraphEntity\UndirectedGraphEntity.csproj">
       <Project>{d5ff4180-3394-42aa-9be4-2a43f9b8d7d7}</Project>
       <Name>UndirectedGraphEntity</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

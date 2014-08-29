@@ -7,7 +7,7 @@ using System.Text;
 
 namespace UndirectedGraphWebServices
 {
-    [ServiceContract(Namespace = "AjaxService")]
+    [ServiceContract]
     public interface IDataLoaderWS
     {
 

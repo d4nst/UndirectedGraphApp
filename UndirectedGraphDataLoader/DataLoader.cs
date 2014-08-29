@@ -49,11 +49,6 @@ namespace UndirectedGraphDataLoader
                     dbContext.Entry(existingNode).State = EntityState.Modified;
                     existingNode.Label = graphNode.Label;
 
-                    //foreach (var adjacentNode in graphNode.AdjacentNodes)
-                    //{
-                    //    CreateAdjacentNode(dbContext, existingNode, adjacentNode);
-                    //}
-
                     CreateGraphEdges(dbContext, graphNode);
 
                     dbContext.SaveChanges();
@@ -67,13 +62,6 @@ namespace UndirectedGraphDataLoader
                         Label = graphNode.Label
                     });
 
-                    //dbContext.SaveChanges();
-
-                    //foreach (var adjacentNode in graphNode.AdjacentNodes)
-                    //{
-                    //    CreateAdjacentNode(dbContext, graphNode, adjacentNode);
-                    //}
-
                     CreateGraphEdges(dbContext, graphNode);
 
                     dbContext.SaveChanges();
@@ -84,7 +72,6 @@ namespace UndirectedGraphDataLoader
             }
         }
 
-       
 
         /// <summary>
         /// Clears all the data in the database and

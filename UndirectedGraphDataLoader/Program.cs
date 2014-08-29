@@ -14,8 +14,7 @@ namespace UndirectedGraphDataLoader
            
             {
                 // Create xml parser
-                var nodeXMLParser = new NodeXMLParser();
-                var nodeEdgeXMLParser = new NodeEdgeXMLParser();
+                var nodeEdgeXMLParser = new NodeXMLParser();
 
                 // Create dataLoader instance
                 var dataLoader = new DataLoader(nodeEdgeXMLParser);

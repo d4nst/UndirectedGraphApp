@@ -8,13 +8,8 @@ using System.Xml.Linq;
 
 namespace UndirectedGraphDataLoader
 {
-    public class NodeXMLParser : INodeParser
+    public class NodeXMLParser : INodeParser  
     {
-        /// <summary>
-        /// Parses an XML file to a GraphNode entity
-        /// </summary>
-        /// <param name="path">Path to the XML file</param>
-        /// <returns>GraphNode entity</returns>
         public GraphNode NodeFiletoNodeEntity(string path)
         {
             XDocument xmlDoc = XDocument.Load(path);
@@ -25,14 +20,14 @@ namespace UndirectedGraphDataLoader
             var graphNode = new GraphNode();
             graphNode.ID = node.Element("id").Value;
             graphNode.Label = node.Element("label").Value;
-            graphNode.AdjacentNodes = (from adjacentNode in adjacentNodes.Descendants("id")
-                                       select new GraphNode 
+            graphNode.GraphEdges = (from adjacentNode in adjacentNodes.Descendants("id")
+                                       select new GraphEdge
                                        {
-                                           ID = adjacentNode.Value
-                                       }).ToList<GraphNode>();
+                                           ID = node.Element("id").Value,
+                                           RelatedID = adjacentNode.Value
+                                       }).ToList<GraphEdge>();
 
             return graphNode;
         }
-
     }
 }

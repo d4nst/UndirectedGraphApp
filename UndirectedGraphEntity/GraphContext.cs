@@ -13,18 +13,5 @@ namespace UndirectedGraphEntity
         public DbSet<GraphNode> GraphNode { get; set; }
         public DbSet<GraphEdge> GraphEdge { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<GraphNode>()
-        //        .HasMany(p => p.AdjacentNodes)
-        //        .WithMany()
-        //        .Map(m =>
-        //        {
-        //            m.MapLeftKey("ID");
-        //            m.MapRightKey("RelatedID");
-        //            m.ToTable("AdjacentNodes");
-        //        });
-
-        //}
     }
 }
