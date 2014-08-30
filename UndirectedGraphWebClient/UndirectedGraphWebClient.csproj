@@ -65,11 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.aspx" />
+    <Content Include="index2.aspx" />
     <Content Include="Scripts\application.js" />
-    <Content Include="Scripts\dracula_graffle.js" />
-    <Content Include="Scripts\dracula_graph.js" />
-    <Content Include="Scripts\jquery-1.4.2.min.js" />
-    <Content Include="Scripts\raphael-min.js" />
     <Content Include="WebServices\NodeWS.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -82,6 +79,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index2.aspx.cs">
+      <DependentUpon>index2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index2.aspx.designer.cs">
+      <DependentUpon>index2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

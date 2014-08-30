@@ -16,7 +16,6 @@
     <asp:scriptmanager runat="server">
         <services>
             <asp:ServiceReference Path="~/WebServices/NodeWS.svc" />
-            <asp:ServiceReference Path="~/WebServices/DataLoaderWS.svc" />
         </services>
     </asp:scriptmanager>
     <div>
