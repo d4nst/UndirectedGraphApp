@@ -115,21 +115,6 @@ namespace UndirectedGraphRepository
             }
         }
 
-        /// <summary>
-        /// Creates an adjacent node
-        /// </summary>
-        /// <param name="dbContext">dbContext</param>
-        /// <param name="graphNode">Current graph node</param>
-        /// <param name="adjacentNode">Current adjacent node</param>
-        private static void CreateAdjacentNode(GraphContext dbContext, GraphNode graphNode, GraphNode adjacentNode)
-        {
-            // TODO: implement with Entity Framework API instead of stored procedure
-            dbContext.Database.ExecuteSqlCommand(
-                "EXEC createAdjacentNode @ID, @RelatedID",
-                new SqlParameter("ID", graphNode.ID),
-                new SqlParameter("RelatedID", adjacentNode.ID)
-                );
-        }
 
         /// <summary>
         /// Creates all the edges for the given node.

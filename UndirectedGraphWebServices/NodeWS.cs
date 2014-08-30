@@ -1,27 +1,29 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
 using System.Text;
-using System.Threading.Tasks;
-using UndirectedGraphRepository;
+using UndirectedGraphService;
 using UndirectedGraphEntity;
+using System.Collections;
 
-namespace UndirectedGraphService
+
+namespace UndirectedGraphWebServices
 {
-    public class NodeService : INodeService
+    public class NodeWS : INodeWS
     {
         #region Private Members
 
-        private INodeDao _nodeDao;
+        private INodeService _nodeService;
 
         #endregion
 
         #region Class Constructor
 
-        public NodeService()
+        public NodeWS()
         {
-            _nodeDao = new NodeDao();
+            _nodeService = new NodeService();
         }
 
         #endregion
@@ -30,19 +32,22 @@ namespace UndirectedGraphService
 
         public GraphNode FindNode(string id)
         {
-            return _nodeDao.FindNode(id);
+            return _nodeService.FindNode(id);
         }
 
         public List<GraphNode> FindAllNodes()
         {
-            return _nodeDao.FindAllNodes();
+           return _nodeService.FindAllNodes();
         }
 
         public List<GraphEdge> FindAllEdges()
         {
-            return _nodeDao.FindAllEdges();
+            return _nodeService.FindAllEdges();
         }
 
         #endregion
+
+
+
     }
 }

@@ -53,10 +53,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataManagement\DataLoaderWS.cs" />
-    <Compile Include="DataManagement\IDataLoaderWS.cs" />
-    <Compile Include="FrontEnd\INodeWS.cs" />
-    <Compile Include="FrontEnd\NodeWS.cs" />
+    <Compile Include="DataLoaderWS.cs" />
+    <Compile Include="Interfaces\IDataLoaderWS.cs" />
+    <Compile Include="Interfaces\IPathFinderWS.cs" />
+    <Compile Include="PathFinderWS.cs" />
+    <Compile Include="Interfaces\INodeWS.cs" />
+    <Compile Include="NodeWS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

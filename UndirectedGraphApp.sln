@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 Entity", "0 Entity", "{D3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndirectedGraphEntity", "UndirectedGraphEntity\UndirectedGraphEntity.csproj", "{D5FF4180-3394-42AA-9BE4-2A43F9B8D7D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndirectedGraphDataLoader", "UndirectedGraphDataLoader\UndirectedGraphDataLoader.csproj", "{83978347-5D82-471E-B982-792B831BAD53}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Repository", "1 Repository", "{44A70A85-D395-4330-8310-64E614F39644}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 WebServices", "3 WebServices", "{1B58463E-0994-4DCF-934A-7898B0EC7356}"
@@ -19,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndirectedGraphWebClient", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndirectedGraphWebServices", "UndirectedGraphWebServices\UndirectedGraphWebServices.csproj", "{0DA41C73-3764-4E12-9C3C-9C45BABA5F6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndirectedGraphDAO", "UndirectedGraphDAO\UndirectedGraphDAO.csproj", "{C98A53C6-3745-4EEA-8673-F796FF075D6B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndirectedGraphRepository", "UndirectedGraphDAO\UndirectedGraphRepository.csproj", "{C98A53C6-3745-4EEA-8673-F796FF075D6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndirectedGraphService", "UndirectedGraphService\UndirectedGraphService.csproj", "{0A284D8A-D6F3-4A35-9B36-001744567F84}"
 EndProject
@@ -27,10 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 Service", "2 Service", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 Console", "4 Console", "{8A076336-4F05-4E78-A0D2-7CEB8B4A00DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndirectedGraphDataLoaderConsole", "UndirectedGraphDataLoaderConsole\UndirectedGraphDataLoaderConsole.csproj", "{95B5CB63-9FFB-486D-AF21-4FC3A1013593}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0DA41C73-3764-4E12-9C3C-9C45BABA5F6E} = {0DA41C73-3764-4E12-9C3C-9C45BABA5F6E}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndirectedGraphDataLoader", "UndirectedGraphConsole\UndirectedGraphDataLoader.csproj", "{95B5CB63-9FFB-486D-AF21-4FC3A1013593}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,10 +37,6 @@ Global
 		{D5FF4180-3394-42AA-9BE4-2A43F9B8D7D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5FF4180-3394-42AA-9BE4-2A43F9B8D7D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5FF4180-3394-42AA-9BE4-2A43F9B8D7D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83978347-5D82-471E-B982-792B831BAD53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83978347-5D82-471E-B982-792B831BAD53}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83978347-5D82-471E-B982-792B831BAD53}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83978347-5D82-471E-B982-792B831BAD53}.Release|Any CPU.Build.0 = Release|Any CPU
 		{842F36C5-B994-45B6-B0DE-128458D7EA42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{842F36C5-B994-45B6-B0DE-128458D7EA42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{842F36C5-B994-45B6-B0DE-128458D7EA42}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,7 +63,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D5FF4180-3394-42AA-9BE4-2A43F9B8D7D7} = {D3095EC9-7A9A-4653-AF4D-FC15FFA9D409}
-		{83978347-5D82-471E-B982-792B831BAD53} = {44A70A85-D395-4330-8310-64E614F39644}
 		{C98A53C6-3745-4EEA-8673-F796FF075D6B} = {44A70A85-D395-4330-8310-64E614F39644}
 		{0DA41C73-3764-4E12-9C3C-9C45BABA5F6E} = {1B58463E-0994-4DCF-934A-7898B0EC7356}
 		{842F36C5-B994-45B6-B0DE-128458D7EA42} = {F2BCB75E-BBD9-4442-BB2C-0C59557878CB}

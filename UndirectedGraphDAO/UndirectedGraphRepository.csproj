@@ -46,8 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataLoader.cs" />
+    <Compile Include="Interfaces\IDataLoader.cs" />
     <Compile Include="Interfaces\INodeDao.cs" />
+    <Compile Include="Interfaces\INodeParser.cs" />
     <Compile Include="NodeDAO.cs" />
+    <Compile Include="NodeXMLParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

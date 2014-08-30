@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using UndirectedGraphEntity;
 
-namespace UndirectedGraphDAO
+namespace UndirectedGraphRepository
 {
     public class NodeDao : INodeDao
     {
@@ -33,6 +33,14 @@ namespace UndirectedGraphDAO
             using (var dbContext = new GraphContext())
             {
                 return dbContext.GraphNode.Include("GraphEdges").ToList();
+            }
+        }
+
+        public List<GraphEdge> FindAllNodeEdges(string id)
+        {
+            using (var dbContext = new GraphContext())
+            {
+                return dbContext.GraphEdge.Where(e => e.ID == id  || e.RelatedID == id).ToList();
             }
         }
 

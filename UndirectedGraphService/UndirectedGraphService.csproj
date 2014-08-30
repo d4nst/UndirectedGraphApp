@@ -42,18 +42,16 @@
     <Compile Include="DataLoaderXmlService.cs" />
     <Compile Include="Interfaces\INodeService.cs" />
     <Compile Include="Interfaces\IDataLoaderXmlService.cs" />
+    <Compile Include="Interfaces\IPathFinderService.cs" />
     <Compile Include="NodeService.cs" />
+    <Compile Include="PathFinderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\UndirectedGraphDAO\UndirectedGraphDAO.csproj">
+    <ProjectReference Include="..\UndirectedGraphDAO\UndirectedGraphRepository.csproj">
       <Project>{c98a53c6-3745-4eea-8673-f796ff075d6b}</Project>
-      <Name>UndirectedGraphDAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UndirectedGraphDataLoader\UndirectedGraphDataLoader.csproj">
-      <Project>{83978347-5d82-471e-b982-792b831bad53}</Project>
-      <Name>UndirectedGraphDataLoader</Name>
+      <Name>UndirectedGraphRepository</Name>
     </ProjectReference>
     <ProjectReference Include="..\UndirectedGraphEntity\UndirectedGraphEntity.csproj">
       <Project>{d5ff4180-3394-42aa-9be4-2a43f9b8d7d7}</Project>
