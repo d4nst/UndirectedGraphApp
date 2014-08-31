@@ -1,17 +1,15 @@
-﻿$(function(){ // on dom ready
+﻿$(function() { 
 
     WS.INodeWS.FindAllNodes(cbRenderNodes, cbError);
 
-    
-  
-}); // on dom ready
+}); 
 
 
 function cbRenderNodes(result) {
 
-    contentDiv = document.getElementById("content");
+    headerDiv = document.getElementById("header");
     results = "Number of nodes: " + result.length + "<br/>";
-    contentDiv.innerHTML = contentDiv.innerHTML + results;
+    headerDiv.innerHTML = headerDiv.innerHTML + results;
 
     var nodes = [];
     for (var i = 0; i < result.length; i++) {
@@ -20,7 +18,8 @@ function cbRenderNodes(result) {
             data: {
                 id: result[i].ID,
                 name: result[i].Label
-            }
+            },
+            classes: 'nodeClass'
         });
     }
 
@@ -46,7 +45,7 @@ function cbRenderNodes(result) {
         container: $('#cy')[0],
 
         style: cytoscape.stylesheet()
-          .selector('node')
+          .selector('.nodeClass')
             .css({
                 'content': 'data(name)',
                 'text-valign': 'center',
@@ -64,6 +63,11 @@ function cbRenderNodes(result) {
           .selector('.selected')
             .css({
                 'background-color': '#e74c3c',
+            })
+          .selector('edge.selected')
+            .css({
+                'line-color': '#e74c3c',
+                'width': '3px'
             }),
 
 
@@ -83,17 +87,53 @@ function cbRenderNodes(result) {
             cy.userZoomingEnabled(false);
             cy.elements().unselectify();
 
-            cy.on('tap', 'node', function (e) {
+            /* Tap events */
+            cy.on('tap', '.nodeClass', function (e) {
 
                 var node = e.cyTarget;
                 node.toggleClass('selected');
 
-                if (cy.$('.selected').length > 2) {
+                // remove selected elements if more than two nodes are selected, or if the shortest path 
+                // has already been calculated (selected edges > 0)
+                if (cy.nodes('.selected').length > 2 && cy.edges('.selected').length == 0) {
                     alert("You can only select two nodes");
+                    cy.elements().removeClass("selected");
+                } else if (cy.edges('.selected').length > 0) {
                     cy.elements().removeClass("selected");
                 }
 
             });
+
+            cy.on('tap', 'edge', function (e) {
+                cy.elements().removeClass('selected');
+            });
+
+            cy.on('tap', function (e) {
+                if (e.cyTarget === cy) {
+                    cy.elements().removeClass('selected');
+                }
+            });
+
+
+            /* Button events */
+            $('#btnShortestPath').on('click', function () {
+
+                // only calculate shortest path if there are two nodes selected
+                if (cy.nodes('.selected').length == 2) {
+                    var sourceNode = cy.nodes('.selected')[0].id();
+                    var targetNode = cy.nodes('.selected')[1].id();
+
+                    WS.IPathFinderWS.ShortestPath(sourceNode, targetNode, cbRenderShortestPath, cbError);
+                } else {
+                    alert("You have to select two nodes");
+                }
+
+            });
+
+            $('#btnRedraw').on('click', function () {
+                location.reload();
+            });
+
         }
     });
 
@@ -113,6 +153,22 @@ function findRepeatedEdge(edges, id, relatedId) {
     return false;
 }
 
-function redrawGraph() {
-    location.reload();
+function cbRenderShortestPath(result) {
+    if (result.length != 0) {
+        for (var i = 0; i < result.length; i++) {
+
+            // add selected class to found nodes
+            cy.nodes('[id="' + result[i].ID + '"]').addClass('selected');
+
+            // add selected class to edges between the found nodes
+            if (i != result.length - 1) {
+                cy.edges('[source="' + result[i].ID + '"][target="' + result[i + 1].ID + '"]').addClass('selected');
+                cy.edges('[source="' + result[i + 1].ID + '"][target="' + result[i].ID + '"]').addClass('selected');
+            }
+        }
+    } else {
+        // if no shortest path is found, unselect the nodes
+        cy.nodes().removeClass('selected');
+    }
+
 }

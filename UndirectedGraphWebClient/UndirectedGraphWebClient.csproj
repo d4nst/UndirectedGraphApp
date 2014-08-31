@@ -65,12 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.aspx" />
-    <Content Include="index2.aspx" />
     <Content Include="Scripts\application.js" />
     <Content Include="WebServices\NodeWS.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="WebServices\PathFinderWS.svc" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="index.aspx.cs">
@@ -79,13 +79,6 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="index2.aspx.cs">
-      <DependentUpon>index2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="index2.aspx.designer.cs">
-      <DependentUpon>index2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

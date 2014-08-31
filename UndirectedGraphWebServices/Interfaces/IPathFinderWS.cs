@@ -8,7 +8,7 @@ using UndirectedGraphEntity;
 
 namespace UndirectedGraphWebServices
 {
-    [ServiceContract]
+    [ServiceContract(Namespace = "WS")]
     public interface IPathFinderWS
     {
         [OperationContract]

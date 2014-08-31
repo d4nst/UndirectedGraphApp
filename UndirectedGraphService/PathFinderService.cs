@@ -110,9 +110,9 @@ namespace UndirectedGraphService
             if (nodeAndPrevious != null)
             {
                 TraverseGraphNodeAndPreviousList(nodeAndPreviousList, nodeAndPrevious, ref shortestPathList);
-                // Reverse the list and remove the root node to display only the nodes between root and target
+                // Add the root node to the list and reverse it
                 shortestPathList.Reverse();
-                shortestPathList.RemoveAt(0);
+                shortestPathList.Add(targetNode);
             }
 
             return shortestPathList;
