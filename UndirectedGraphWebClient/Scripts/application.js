@@ -1,6 +1,6 @@
 ﻿$(function() { 
 
-    WS.INodeWS.FindAllNodes(cbRenderNodes, cbError);
+    WS.IGraphNodeWS.FindAllNodes(cbRenderNodes, cbError);
 
 }); 
 

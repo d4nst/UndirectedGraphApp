@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Service="UndirectedGraphWebServices.NodeWS" Factory="System.ServiceModel.Activation.WebScriptServiceHostFactory" %>

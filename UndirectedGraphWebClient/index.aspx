@@ -20,27 +20,25 @@
           width: 95%;
           position: absolute;
           left: 2.5%;
-          top: 10%;
+          top: 8%;
           bottom: 30px;
           border-width: 1px;
           border-style: solid;
         }
 
         #header {
-            /*padding: 10px;*/
-            margin-left: 35px;
-            margin-top: 15px;
+            margin-left: 40px;
+            margin-top: 25px;
         }
 
     </style>
 </head>
 <body>
 
-    
-        <form id="form1" runat="server">
+    <form id="form1" runat="server">
     <asp:scriptmanager runat="server">
         <services>
-            <asp:ServiceReference Path="~/WebServices/NodeWS.svc" />
+            <asp:ServiceReference Path="~/WebServices/GraphNodeWS.svc" />
             <asp:ServiceReference Path="~/WebServices/PathFinderWS.svc" />
         </services>
     </asp:scriptmanager>
@@ -50,12 +48,8 @@
         <button id="btnRedraw">Redraw</button>
         <button id="btnShortestPath">Calculate shortest path</button>
     </div>
-    <div id="cy">
 
-    </div>
-
-
-
+    <div id="cy"></div>
 
 </body>
 </html>
