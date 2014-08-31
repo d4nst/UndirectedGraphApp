@@ -1,5 +1,6 @@
 ﻿$(function() { 
 
+    // Ajax call to find all the nodes
     WS.IGraphNodeWS.FindAllNodes(cbRenderNodes, cbError);
 
 }); 
@@ -12,7 +13,12 @@ function cbRenderNodes(result) {
     headerDiv.innerHTML = headerDiv.innerHTML + results;
 
     var nodes = [];
+    var edges = [];
+
+    // Loop through all the nodes
     for (var i = 0; i < result.length; i++) {
+
+        // Insert node to the nodes collection
         nodes.push({
             group: 'nodes',
             data: {
@@ -21,12 +27,11 @@ function cbRenderNodes(result) {
             },
             classes: 'nodeClass'
         });
-    }
 
-    var edges = [];
-    for (var i = 0; i < result.length; i++) {
+        // Loop through all the edges of the current node
         for (var j = 0; j < result[i].GraphEdges.length; j++) {
 
+            // Insert edge to the edges collection if it's not already inside
             if (!findRepeatedEdge(edges, result[i].GraphEdges[j].ID, result[i].GraphEdges[j].RelatedID)) {
 
                 edges.push({
@@ -39,11 +44,11 @@ function cbRenderNodes(result) {
             }
         }
     }
-    
-    
+
     var cy = cytoscape({
         container: $('#cy')[0],
 
+        // Graph style
         style: cytoscape.stylesheet()
           .selector('.nodeClass')
             .css({
@@ -70,7 +75,7 @@ function cbRenderNodes(result) {
                 'width': '3px'
             }),
 
-
+        
         elements: {
             nodes: nodes,
             edges: edges
@@ -88,6 +93,8 @@ function cbRenderNodes(result) {
             cy.elements().unselectify();
 
             /* Tap events */
+
+            // Node click
             cy.on('tap', '.nodeClass', function (e) {
 
                 var node = e.cyTarget;
@@ -104,10 +111,12 @@ function cbRenderNodes(result) {
 
             });
 
+            // Edge click
             cy.on('tap', 'edge', function (e) {
                 cy.elements().removeClass('selected');
             });
 
+            // Click anywhere inside canvas except nodes and edges
             cy.on('tap', function (e) {
                 if (e.cyTarget === cy) {
                     cy.elements().removeClass('selected');
@@ -116,6 +125,8 @@ function cbRenderNodes(result) {
 
 
             /* Button events */
+
+            // Calculate shortest path click
             $('#btnShortestPath').on('click', function () {
 
                 // only calculate shortest path if there are two nodes selected
@@ -123,13 +134,16 @@ function cbRenderNodes(result) {
                     var sourceNode = cy.nodes('.selected')[0].id();
                     var targetNode = cy.nodes('.selected')[1].id();
 
+                    // Ajax call to calculate the shortest path between source and target nodes
                     WS.IPathFinderWS.ShortestPath(sourceNode, targetNode, cbRenderShortestPath, cbError);
+
                 } else {
                     alert("You have to select two nodes");
                 }
 
             });
 
+            // Redraw click
             $('#btnRedraw').on('click', function () {
                 location.reload();
             });
@@ -143,6 +157,7 @@ function cbError() {
     alert("Error!");
 }
 
+// Finds if an edge has already been added to the edges collection
 function findRepeatedEdge(edges, id, relatedId) {
 
     for (var i = 0; i < edges.length; i++) {
@@ -152,6 +167,7 @@ function findRepeatedEdge(edges, id, relatedId) {
     }
     return false;
 }
+
 
 function cbRenderShortestPath(result) {
     if (result.length != 0) {

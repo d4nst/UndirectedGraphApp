@@ -24,6 +24,11 @@ namespace UndirectedGraphService.DataManagement
 
         #region Public Methods
 
+        /// <summary>
+        /// Parses an XML file with the node information and insert the attributes in a GraphNode entity
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public GraphNode NodeFileToNodeEntity(string path)
         {
             XDocument xmlDoc = XDocument.Load(path);

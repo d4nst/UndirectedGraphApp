@@ -17,10 +17,11 @@ namespace UndirectedGraphDataLoader
             string path;
 
             Console.WriteLine("Select the path where the folder with the data is located" +
-                              " (\"default\" to load the \"Input Data\" folder under the project root path):");
+                              " (leave blank to load the \"Input data\" folder under the project root path):");
 
             path = Console.ReadLine();
-            if (path.Equals("default"))
+
+            if (String.IsNullOrEmpty(path))
             {
                 string location = System.Reflection.Assembly.GetExecutingAssembly().Location;
                 int index = location.IndexOf("UndirectedGraphDataLoader");

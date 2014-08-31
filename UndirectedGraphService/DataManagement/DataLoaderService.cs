@@ -40,7 +40,7 @@ namespace UndirectedGraphService.DataManagement
         #region Public Methods
 
         /// <summary>
-        /// Adds the file in the given file path to the database
+        /// Adds the file in the given path to the database
         /// </summary>
         /// <param name="filePath"></param>
         public void NodeFileToDatabase(string filePath)
@@ -79,7 +79,7 @@ namespace UndirectedGraphService.DataManagement
 
         /// <summary>
         /// Clears all the data in the database and
-        /// adds all the files under the given directory path to the database
+        /// adds all the files under the given path to the database
         /// </summary>
         /// <param name="directoryPath">Directory path</param>
         public void NodeDirectoryToDatabase(string directoryPath)
@@ -102,7 +102,7 @@ namespace UndirectedGraphService.DataManagement
         #region Private Methods
 
         /// <summary>
-        ///  Clear all the data in the database
+        ///  Clears all the data in the database
         /// </summary>
         private void ClearDatabase()
         {

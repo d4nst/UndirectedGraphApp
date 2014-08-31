@@ -29,7 +29,10 @@ namespace UndirectedGraphService.FrontEndOriented
 
         #region Public Methods
 
-
+        /// <summary>
+        /// Retrieves all nodes found in the database
+        /// </summary>
+        /// <returns>List of nodes</returns>
         public List<GraphNode> FindAllNodes()
         {
             return _unitOfWork.GraphNodeRepository.FindAllNodes();
