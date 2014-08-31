@@ -39,7 +39,7 @@ The Service project contains three components:
 
 ##### Data management
 Used by the Data Loader console application. 
-There are three methods available: an XML parser to parse a single file to a GraphNode entity, a method to insert an XML file to the database using the provided parser, and a method to insert all the XML files under a given directory to the database using the provided parser.
+There are three methods available: an XML parser to read a single file and insert it in a GraphNode entity, a method to insert an XML file to the database using the provided parser, and a method to insert all the XML files under a given directory to the database using the provided parser.
 
 ##### Front-end oriented 
 Used to provide data for the web application. 
