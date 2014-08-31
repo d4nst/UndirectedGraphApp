@@ -21,7 +21,7 @@ The input data is provided with a set of XML files. Each file represents a singl
 
 Node relationships could be described in uni or bidirectional mode. Since we are operating on an undirected graph, bidirectional relationships are treated the same way as a unidirectional ones.
 
-A sample set of input files is provided in the Input data folder located in the root directory.
+A sample set of input files is provided in the "Input data" folder located in the root directory.
 
 ## Solution components
 Dependency injection has been used to keep the coupling of the components to a minimum. The components are wired in the Web Services project.
@@ -52,7 +52,7 @@ It contains a method that returns the shortest path between a root node and a ta
 ### Web Services
 The Web Services project is a Web Service Library in charge of wiring all the components and provide the methods to be used by the console and the web applications. 
 
-Again, the same three categories exists: Data management, Front-end oriented and Domain Specific, with the same functions as before. 
+Again, the same three categories exist: Data management, Front-end oriented and Domain Specific, with the same functions as before. 
 
 Running this project in Visual Studio would let you use the WCF Test Client to test the web services.
 
